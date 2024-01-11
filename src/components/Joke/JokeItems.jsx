@@ -7,6 +7,7 @@ function JokeItems() {
   const [jokes, setJokes] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [toggle, setToggle] = useState(false);
   const { checkLists } = useContext(jokeContext);
 
   useEffect(() => {
@@ -26,9 +27,10 @@ function JokeItems() {
       }
     }
     getJokes();
-  }, [checkLists])
+  }, [toggle, checkLists])
 
   const handleClick = (id) => {
+    setToggle(prevState => !prevState);
     setDisplayStatus(prevState => ({
       ...prevState,
       [id]: !prevState[id]

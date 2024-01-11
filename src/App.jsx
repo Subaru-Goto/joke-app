@@ -20,8 +20,6 @@ function App() {
           <JokeComponent.Form/>
         </JokeComponent.Options>
         <JokeComponent.Display>
-          {/*isLoading && <p>Loading...</p>*/}
-          {/*isError && <p>Something went wrong...</p>*/}
           {loadJokes &&
           <Suspense fallback={<h2>Loading...</h2>}>
             <JokeList />

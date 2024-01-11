@@ -7,7 +7,7 @@ function App() {
   const [loadJokes, setLoadJokes] = useState(false);
 
   const JokeList = lazy(() => {
-    return import("./components/Joke/JokeItems")
+    return import("./components/Joke/JokeItems");
   })
 
   return (
@@ -28,6 +28,6 @@ function App() {
       </JokeComponent>
     </>
   )
-}
+};
 
 export default App

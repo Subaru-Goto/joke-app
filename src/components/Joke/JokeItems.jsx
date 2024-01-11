@@ -18,11 +18,11 @@ function JokeItems() {
       try {
         const data = await fetchData(url);
         setJokes(data);
-        setIsLoading(false)
       } catch (error) {
         setIsError(true);
-        setIsLoading(false);
         throw new Error(error)
+      } finally {
+        setIsLoading(false);
       }
     }
     getJokes();

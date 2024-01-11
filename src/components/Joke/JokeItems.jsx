@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { jokeContext } from "./JokeComponent";
+import { toggleContext } from "./JokeComponent";
 import fetchData from "../../../api/api"
 
 function JokeItems() {
@@ -7,8 +8,8 @@ function JokeItems() {
   const [jokes, setJokes] = useState([]);
   const [isError, setIsError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [toggle, setToggle] = useState(false);
   const { checkLists } = useContext(jokeContext);
+  const { toggle } = useContext(toggleContext);
 
   useEffect(() => {
 
@@ -30,7 +31,6 @@ function JokeItems() {
   }, [toggle, checkLists])
 
   const handleClick = (id) => {
-    setToggle(prevState => !prevState);
     setDisplayStatus(prevState => ({
       ...prevState,
       [id]: !prevState[id]

@@ -1,5 +1,6 @@
-import { Fragment, useId, useReducer, useContext } from "react";
+import { Fragment, useId, useReducer, useContext, useState } from "react";
 import { jokeContext } from "./JokeComponent";
+import { toggleContext } from "./JokeComponent";
 
 const initialState = {
   any:true,
@@ -24,10 +25,11 @@ function reducer(state, action) {
 }
 
 function JokeForm() {
+  
   const id = useId();
   const [state, dispatch] = useReducer(reducer, initialState);
   const { setCheckLists, setLoadJokes } = useContext(jokeContext);
-
+  const { setToggle } = useContext(toggleContext);
   const otherCategories = Object.keys(initialState).filter(key => key !== "any");
 
   const handleChangeAny = () => {
@@ -41,6 +43,7 @@ function JokeForm() {
     event.preventDefault();
     setCheckLists(state);
     setLoadJokes(true);
+    setToggle(prevState => !prevState);
   }
 
   return (
